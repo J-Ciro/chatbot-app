@@ -1,8 +1,8 @@
-import pool from "../config/database";
+import database from "../config/database";
 import { Message } from "../types/types";
 
 export const getMessages = async (): Promise<Message[]> => {
-  const [rows] = await pool.query<Message[]>(
+  const [rows] = await database.query<Message[]>(
     "SELECT * FROM messages ORDER BY timestamps ASC"
   );
   return rows;
@@ -12,7 +12,7 @@ export const saveMessage = async (
   content: string,
   sender: "user" | "bot"
 ): Promise<void> => {
-  await pool.query("INSERT INTO messages (content, sender) VALUES (?, ?)", [
+  await database.query("INSERT INTO messages (content, sender) VALUES (?, ?)", [
     content,
     sender,
   ]);
