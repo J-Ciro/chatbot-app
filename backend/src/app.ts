@@ -7,6 +7,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/messages", messagesRouter);
+app.use("/messages", messagesRouter);
 
 export default app;

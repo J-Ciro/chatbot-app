@@ -4,7 +4,7 @@
     "cors": "^2.8.5",
     "mysql2": "^3.14.1"
   },
-"scripts": {
+  "scripts": {
     "dev": "ts-node-dev src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js"
