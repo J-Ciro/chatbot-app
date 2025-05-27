@@ -1,8 +1,10 @@
 import axios from "axios";
 import type { Message } from "../models/Message";
 
+const BASE_URL = process.env.BOT_API;
+
 const api = axios.create({
-  baseURL: "http://localhost:3001/",
+  baseURL: BASE_URL,
 });
 
 export const ChatService = {
