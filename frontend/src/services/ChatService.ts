@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { Message } from "../models/Message";
 
-const BASE_URL = process.env.BOT_API;
+const BASE_URL = process.env.NEXT_PUBLIC_BOT_API;
 
 const api = axios.create({
   baseURL: BASE_URL,
