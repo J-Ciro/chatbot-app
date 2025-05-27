@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChatService } from "../services/apiService";
+import { ChatService } from "../services/ChatService";
 import type { Message } from "../models/Message";
 
 export const useChat = () => {
@@ -27,22 +27,29 @@ export const useChat = () => {
   const sendMessage = async (input: string) => {
     try {
       setIsLoading(true);
-      const tempId = Math.random().toString(36);
+      const tempId =
+        Date.now().toString(36) + Math.random().toString(36).substring(2);
       const userMessage: Message = {
         id_message: tempId,
         content: input,
         sender: "user",
         created_at: new Date().toISOString(),
       };
+
+      // Actualiza el estado de forma más segura
       setMessages((prev) => [...prev, userMessage]);
 
       const botMessage = await ChatService.sendMessage(input);
 
-      setMessages((prev) => [
-        ...prev,
-        ...(Array.isArray(botMessage) ? botMessage : [botMessage]),
-      ]);
+      // Verifica el formato de la respuesta
+      console.log("Bot response:", botMessage);
+
+      // Asegúrate de que siempre sea un array
+      const newMessages = Array.isArray(botMessage) ? botMessage : [botMessage];
+
+      setMessages((prev) => [...prev, ...newMessages]);
     } catch (err) {
+      console.error("Error sending message:", err);
       setError(
         err instanceof Error ? err.message : "Error al enviar el mensaje"
       );

@@ -11,8 +11,13 @@ export const ChatService = {
     return response.data;
   },
 
-  sendMessage: async (input: string): Promise<Message[]> => {
+  sendMessage: async (input: string): Promise<Message> => {
     const response = await api.post("/messages", { input });
-    return response.data;
+    return {
+      id_message: Date.now().toString(),
+      content: response.data.message,
+      sender: "bot",
+      created_at: new Date().toISOString(),
+    };
   },
 };

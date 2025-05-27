@@ -6,15 +6,15 @@ type MessageBubbleProps = {
 
 const MessageBubble = ({ message }: MessageBubbleProps) => (
   <div
-    className={`bubble-message ${message.sender}`}
+    className={`message ${message.sender}`}
     data-id={message.id_message}
     aria-live="polite"
   >
-    <span className="bubble-sender">{message.sender}:</span>
+    <span className="sender">{message.sender}:</span>
     <p>{message.content}</p>
-    {/* <time className="timestamp">
+    <time className="timestamp">
       {new Date(message.created_at).toLocaleTimeString()}
-    </time> */}
+    </time>
   </div>
 );
 
