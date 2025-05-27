@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import type { Message } from "../../models/Message";
 import MessageBubble from "./MessageBubble";
 
@@ -7,10 +7,6 @@ type MessageListProps = {
 };
 
 const MessageList = ({ messages }: MessageListProps) => {
-  useEffect(() => {
-    console.log("Messages updated:", messages);
-  }, [messages]);
-
   const endOfListRef = useRef<HTMLDivElement>(null);
 
   return (

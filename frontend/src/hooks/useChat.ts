@@ -36,15 +36,10 @@ export const useChat = () => {
         created_at: new Date().toISOString(),
       };
 
-      // Actualiza el estado de forma más segura
       setMessages((prev) => [...prev, userMessage]);
-
       const botMessage = await ChatService.sendMessage(input);
-
-      // Verifica el formato de la respuesta
       console.log("Bot response:", botMessage);
 
-      // Asegúrate de que siempre sea un array
       const newMessages = Array.isArray(botMessage) ? botMessage : [botMessage];
 
       setMessages((prev) => [...prev, ...newMessages]);
