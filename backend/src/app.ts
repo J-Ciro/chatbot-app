@@ -19,10 +19,11 @@ const options = {
 };
 
 const specs = swaggerJsdoc(options);
-app.use("/messages", messagesRouter);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/messages", messagesRouter);
 
 export default app;
