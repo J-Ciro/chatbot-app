@@ -38,7 +38,7 @@ export const useChat = () => {
 
       setMessages((prev) => [...prev, userMessage]);
       const botMessage = await ChatService.sendMessage(input);
-      console.log("Bot response:", botMessage);
+      // console.log("Bot response:", botMessage);
 
       const newMessages = Array.isArray(botMessage) ? botMessage : [botMessage];
 
