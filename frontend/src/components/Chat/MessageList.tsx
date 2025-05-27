@@ -1,13 +1,22 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import type { Message } from "../../models/Message";
 import MessageBubble from "./MessageBubble";
 
 type MessageListProps = {
   messages: Message[];
+  isLoading?: boolean;
 };
 
-const MessageList = ({ messages }: MessageListProps) => {
+const MessageList = ({ messages, isLoading }: MessageListProps) => {
   const endOfListRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (endOfListRef.current) {
+      endOfListRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [messages, isLoading]); // Añade isLoading como dependencia
 
   return (
     <div className="messages-container">
