@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
-import { getMessages, saveMessage } from "../services/dbService";
-import { getAIResponse } from "../services/aiService";
+import { getMessages, saveMessage } from "../services/ChatService";
+import { getAIResponse } from "../services/ApiService";
 
 const router = Router();
 
