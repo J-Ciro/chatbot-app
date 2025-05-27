@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./styles/ChatInput.css";
 
 type ChatInputProps = {
   onSend: (input: string) => void;

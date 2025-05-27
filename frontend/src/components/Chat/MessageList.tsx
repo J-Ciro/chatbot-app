@@ -10,7 +10,7 @@ const MessageList = ({ messages }: MessageListProps) => {
   const endOfListRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="messages">
+    <div className="messages-container">
       {messages.map((msg) => (
         <MessageBubble key={`${msg.id_message}`} message={msg} />
       ))}
