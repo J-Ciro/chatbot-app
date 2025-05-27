@@ -4,7 +4,7 @@ import { getAIResponse } from "../services/aiService";
 
 const router = Router();
 
-router.get("/", async (res: Response) => {
+router.get("/", async (req: Request, res: Response) => {
   try {
     const messages = await getMessages();
     res.json(messages);

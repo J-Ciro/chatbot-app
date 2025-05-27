@@ -3,7 +3,7 @@ import { Message } from "../types/types";
 
 export const getMessages = async (): Promise<Message[]> => {
   const [rows] = await database.query<Message[]>(
-    "SELECT * FROM messages ORDER BY timestamps ASC"
+    "SELECT * FROM messages ORDER BY created_at ASC"
   );
   return rows;
 };
